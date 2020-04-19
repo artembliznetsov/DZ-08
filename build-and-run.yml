@@ -36,5 +36,5 @@
         state: present
         volumes:
           - /opt/boxfuse:/opt
-        auto_remove: yes
+        #auto_remove: yes
 
