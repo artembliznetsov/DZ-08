@@ -8,6 +8,10 @@
       apt:
         name: docker.io
 
+    - name: Install docker-py
+      pip:
+        name: docker-py
+
 - hosts:
     - build-server
   become: yes
