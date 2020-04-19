@@ -20,6 +20,5 @@
     - name: Build image
       docker_image:
         name: boxfuse_builder
-        build:
-          path: /opt/boxfuse
-          dockerfile: Dockerfile_build
+        path: /opt/boxfuse
+        dockerfile: Dockerfile_build
