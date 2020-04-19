@@ -46,7 +46,7 @@
     - name: Copy war from builder server
       fetch:
         src: /opt/boxfuse_war/hello-1.0.war
-        dest: ./files/hello-1.0.war
+        dest: files/hello-1.0.war
 
 - hosts:
     - run-server
@@ -65,7 +65,7 @@
 
     - name: Copy war file
       copy:
-        src: ./files/hello-1.0.war
+        src: files/hello-1.0.war
         dest: /opt/boxfuse_war/
 
     - name: Run build container
