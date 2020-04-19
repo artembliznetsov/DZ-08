@@ -38,3 +38,12 @@
           - /opt/boxfuse_war:/opt
         #auto_remove: yes
 
+    - name: Wait war file
+      wait_for:
+        path: /opt/boxfuse_war/hello-1.0.war
+        state: present
+
+    - name: Copy war from builder server
+      fetch:
+        src: /opt/boxfuse_war/hello-1.0.war
+        dest: ./files/hello-1.0.war
