@@ -47,3 +47,34 @@
       fetch:
         src: /opt/boxfuse_war/hello-1.0.war
         dest: ./files/hello-1.0.war
+
+- hosts:
+    - run-server
+  become: yes
+  tasks:
+    - name: Clone repository
+      git:
+        repo: 'https://github.com/artembliznetsov/DZ-07.git'
+        dest: /opt/boxfuse
+
+    - name: Build image
+      docker_image:
+        name: boxfuse_run
+        path: /opt/boxfuse
+        dockerfile: Dockerfile_run
+
+    - name: Copy war file
+      copy:
+        src: ./files/hello-1.0.war
+        dest: /opt/boxfuse_war/
+
+    - name: Run build container
+      docker_container:
+        name: boxfuse_run
+        image: boxfuse_run
+        state: started
+        volumes:
+          - /opt/boxfuse_war:/opt
+        ports:
+          - "8080:8080"
+
