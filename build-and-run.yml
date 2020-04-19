@@ -47,6 +47,7 @@
       fetch:
         src: /opt/boxfuse_war/hello-1.0.war
         dest: files/hello-1.0.war
+        flat: yes
 
 - hosts:
     - run-server
