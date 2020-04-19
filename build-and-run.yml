@@ -28,3 +28,13 @@
         name: boxfuse_builder
         path: /opt/boxfuse
         dockerfile: Dockerfile_build
+
+    - name: Run build container
+      docker_container:
+        name: boxfuse_builder
+        image: boxfuse_builder
+        state: present
+        volumes:
+          - /opt/boxfuse:/opt
+        auto_remove: yes
+
