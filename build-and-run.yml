@@ -7,3 +7,19 @@
     - name: Install Docker
       apt:
         name: docker.io
+
+- hosts:
+    - build-server
+  become: yes
+  tasks:
+    - name: Clone repository
+      git:
+        repo: 'https://github.com/artembliznetsov/DZ-07.git'
+        dest: /opt/boxfuse
+
+    - name: Build image
+      docker_image:
+        name: boxfuse_builder
+        build:
+          path: /opt/boxfuse
+          dockerfile: Dockerfile_build
